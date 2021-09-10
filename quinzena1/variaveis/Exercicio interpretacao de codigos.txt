@@ -1,0 +1,36 @@
+//Exercícios de interpretação de código
+
+//1. Analise o programa abaixo e diga o que será impresso no console, SEM EXECUTAR o programa.
+/*let a = 10
+let b = 10
+console.log(b)*/
+
+//Será impresso o número 10
+
+/*b = 5
+console.log(a, b)*/
+
+//Será impresso 10 e 5
+
+//2. Analise o programa abaixo e diga o que será impresso no console, SEM EXECUTAR o programa.
+/*let a = 10
+let b = 20
+let c
+c = a
+b = c
+a = b
+
+console.log(a, b, c)*/
+
+//Será impresso 10, 10 e 10
+
+//3. Analise o programa abaixo, entenda o que ele faz e sugira melhores nomes para as variáveis. Lembre-se que devemos escolher nomes significativos, usar o padrão camelCase. Alem disso, os nomes não podem começar com números ou caracteres especiais.
+/*let p = prompt("Quantas horas você trabalha por dia?")
+let t = prompt("Quanto você recebe por dia?")
+alert(`Voce recebe ${t/p} por hora`)*/
+
+//O programa pedirá ao usuário para informar quantas horas trabalha por dia e quanto recebe por dia, e informará para ele quanto recebe por hora
+//p= horasTrabalhadasPorDia
+//t= salárioPorDia
+
+
