@@ -96,23 +96,32 @@ function checaIgualdadeDesconsiderandoCase() {
 
 // Exercício 10
 function checaRenovacaoRG() {
-  let anoAtual = prompt("Digite o ano atual")
-  let anoNascimento = prompt("Digite o ano do seu nascimento")
-  let anoEmissaoId = prompt("Digite o ano da emissão da sua carteira de identidade")
+  let anoAtual = Number(prompt("Digite o ano atual"))
+  let anoNascimento = Number(prompt("Digite o ano do seu nascimento"))
+  let anoEmissaoId = Number(prompt("Digite o ano da emissão da sua carteira de identidade"))
 
-  const menorOuIgualVinte = ((anoAtual - anoNascimento =< 20) && (anoAtual - anoEmissaoId < 5))
-  const vinteEcinquenta = ((anoAtual - anoNascimento =< 50) && (anoAtual - anoEmissaoId < 10))
-  const acimaCinquenta = ((anoAtual - anoNascimento > 50) && (anoAtual - anoEmissaoId < 15))
+  const menorOuIgualVinte = ((anoAtual - anoNascimento) <= 20) && ((anoAtual - anoEmissaoId) >= 5)
+  const vinteEcinquenta = ((anoAtual - anoNascimento) <= 50) && ((anoAtual - anoEmissaoId) >= 10)
+  const acimaCinquenta = ((anoAtual - anoNascimento) > 50) && ((anoAtual - anoEmissaoId) >= 15)
 
   console.log(menorOuIgualVinte || vinteEcinquenta || acimaCinquenta)
 }
 
 // Exercício 11
 function checaAnoBissexto() {
-  // escreva seu código aqui
+  let anoUsuario = Number(prompt("Digite um ano aqui"))
+  const condicaoUm = (anoUsuario % 400 === 0)
+  const condicaoDois = (anoUsuario % 4 === 0 && anoUsuario % 100 !== 0)
+  const condicaoTres = (anoUsuario % 400 === 0)
+  
+  console.log(condicaoUm || condicaoDois || condicaoTres)
 }
 
 // Exercício 12
 function checaValidadeInscricaoLabenu() {
-  // escreva seu código aqui
+  let maiorIdade = prompt("Você tem mais de 18 anos? (resposta com sim ou não)")
+  let ensinoMedioCompleto = prompt("Você possui ensino médio completo? (resposta com sim ou não)")
+  let disponibilidade = prompt("Você possui disponibilidade exclusiva durante os horários do curso? (resposta com sim ou não)")
+  
+    console.log (maiorIdade === "sim" && ensinoMedioCompleto === "sim" && disponibilidade === "sim")
 }
