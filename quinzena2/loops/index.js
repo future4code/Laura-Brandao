@@ -6,10 +6,16 @@
 //2.
 //a. Serão impressos somente números maiores que 18, da array lista.
 //b. 
+// let indice = 0
 // const lista = [10, 11, 12, 15, 18, 19, 21, 23, 25, 27, 30]
 // for (let numero of lista) {
-//     console.log(numero)
+
+//   if (numero > 18) {
+// 		console.log(numero, "indice", indice)
 // 	}
+
+//   indice++
+// }
 
 //3.
 //Será impresso:
