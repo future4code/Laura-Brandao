@@ -11,38 +11,38 @@
  * 
  */
 
-console.log("Boas vindas ao jogo de Blackjack!")
+// console.log("Boas vindas ao jogo de Blackjack!")
 
 
-if(confirm("Quer iniciar uma nova rodada?")) {
-	iniciarPartida()
-} else {
-	console.log("O jogo acabou!")
-}
+// if(confirm("Quer iniciar uma nova rodada?")) {
+// 	iniciarPartida()
+// } else {
+// 	console.log("O jogo acabou!")
+// }
 
-function iniciarPartida(){
-   const cartaUsuario = comprarCarta();
-   const cartaUsuarioDois = comprarCarta();
-   const pontosUsuario = cartaUsuario.valor + cartaUsuarioDois.valor
-   const cartaComputador = comprarCarta();
-   const cartaComputadorDois = comprarCarta();
-   const pontosComputador = cartaComputador.valor + cartaComputadorDois.valor
+// function iniciarPartida(){
+//    const cartaUsuario = comprarCarta();
+//    const cartaUsuarioDois = comprarCarta();
+//    const pontosUsuario = cartaUsuario.valor + cartaUsuarioDois.valor
+//    const cartaComputador = comprarCarta();
+//    const cartaComputadorDois = comprarCarta();
+//    const pontosComputador = cartaComputador.valor + cartaComputadorDois.valor
 
-   console.log(`Usuário - cartas ${cartaUsuario.texto} ${cartaUsuarioDois.texto} - pontuação ${pontosUsuario}`)
-   console.log(`Computador - cartas ${cartaComputador.texto} ${cartaComputadorDois.texto} - pontuação ${pontosComputador}`)
+//    console.log(`Usuário - cartas ${cartaUsuario.texto} ${cartaUsuarioDois.texto} - pontuação ${pontosUsuario}`)
+//    console.log(`Computador - cartas ${cartaComputador.texto} ${cartaComputadorDois.texto} - pontuação ${pontosComputador}`)
 
-   const usuarioVencedor = pontosUsuario > pontosComputador
-   const computadorVencedor = pontosComputador > pontosUsuario
-   const empate = pontosUsuario === pontosComputador
+//    const usuarioVencedor = pontosUsuario > pontosComputador
+//    const computadorVencedor = pontosComputador > pontosUsuario
+//    const empate = pontosUsuario === pontosComputador
 
-   if(usuarioVencedor){
-      console.log("O usuário ganhou!")
-   }else if (computadorVencedor){
-      console.log("O computador ganhou!")
-   }else if (empate){
-      console.log("Empate!")
-   }else{
-      console.log("O jogo acabou!")
-   }
-}
+//    if(usuarioVencedor){
+//       console.log("O usuário ganhou!")
+//    }else if (computadorVencedor){
+//       console.log("O computador ganhou!")
+//    }else if (empate){
+//       console.log("Empate!")
+//    }else{
+//       console.log("O jogo acabou!")
+//    }
+// }
 
