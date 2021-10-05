@@ -1,0 +1,15 @@
+- Passos fundamentais:
+	- Ter atenção no enunciado;
+		- Garantir entendimento do enunciado.
+	- Retirar informações relevantes;
+		- O código pode ter várias palavras-chave. O que podemos transformar em valores no código.
+	- Pensar entradas e saídas;
+		- Criar expectativa do programa. 
+	- Fazer um esquema visual;
+		- Fluxogramas ou tópicos para entender os passos pra chegar no raciocínio.
+	- Criar "código feio";
+		- Código sem preocupação com performance. Primeiramente resolver o problema em questão.
+	- Testar Força-Bruta;
+		- Testar o código escrito para ver o funcionamento.
+	- Refatorar;
+		- Após testes, podemos checar a estrutura para melhorar o código, sem alterá-lo. Conferir boas práticas. Facilitar interpretação do código
