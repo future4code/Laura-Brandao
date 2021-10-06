@@ -71,8 +71,27 @@ function retornaExpressoesBooleanas() {
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
+  let numeroPares = []
+  for(let i = 0; i < n; i++){  // percorre até o N que estarão indicando; n= 3-> 0,1,2; n=4-> 0,1,2,3
 
+      numeroPares.push(i*2) // i*2 cria números pares. Ex: 0*2=0; 1*2=2; 2*2=4...
+      
+  }
+  return numeroPares
 }
+
+//Outra forma de fazer:
+//function retornaNNumerosPares(n) {
+//  let numeroPares = []
+//  for(let i = 0; i < (n*2); i+=2){
+//    numeroPares.push(i)
+// }
+// return numeroPares
+//}
+
+//Para números ímpares: criar números ímpares -> i*2-1
+//Ou mudar o for para: for(let i = 1; i < (n*2); i+=2)
+
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
