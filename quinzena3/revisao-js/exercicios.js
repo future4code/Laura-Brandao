@@ -129,12 +129,47 @@ function comparaDoisNumeros(num1, num2){
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
+  let maiorDeTodos = Number.MIN_SAFE_INTEGER 
+  let segundoMaiorDeTodos = Number.MIN_SAFE_INTEGER + 1
+  let menorDeTodos = Number.MAX_SAFE_INTEGER
+  let segundoMenorDeTodos = Number.MAX_SAFE_INTEGER -1
 
+array.forEach(elemento => {
+  if(elemento>maiorDeTodos){
+    segundoMaiorDeTodos = maiorDeTodos
+    maiorDeTodos = elemento
+  }else if(elemento>segundoMaiorDeTodos){
+    segundoMaiorDeTodos = elemento
+  }
+
+  if(elemento<menorDeTodos){
+    segundoMenorDeTodos = menorDeTodos
+    menorDeTodos = elemento
+  }else if(elemento<segundoMenorDeTodos){
+    segundoMenorDeTodos = elemento
+  }
+});
+
+let segundoMaiorEmenor = [segundoMaiorDeTodos, segundoMenorDeTodos]
+return segundoMaiorEmenor
 }
 
 // EXERCÍCIO 11
+function bubble(array) {//You need Two Loops for Bubble sort
+  for (let i = 0; i < arr.length; i++) {
+    for(let j=0; j < arr.length - 1; j++){
+      if (arr[j] > arr[j + 1]) {
+        let a = arr[j]
+        let b = arr[j + 1]
+        arr[j] = b
+        arr[j + 1] = a
+       }
+     }
+  }
+  return arr;
+}
 function ordenaArray(array) {
-
+  bubble(array)
 }
 
 // EXERCÍCIO 12
