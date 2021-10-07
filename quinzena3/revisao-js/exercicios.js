@@ -95,20 +95,25 @@ function retornaNNumerosPares(n) {
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
-  // return 'Escaleno'
-  // return 'Equilátero'
-  // return 'Isósceles'
+  const todosLadosIguais = "Equilátero"
+  const doisLadosIguais = "Isósceles"
+  const ladosDiferentes = "Escaleno"
+
+  if(a===b && a===c){
+    return todosLadosIguais
+  }else if(a!==b && a!==c){
+    return ladosDiferentes
+  }else{
+    return doisLadosIguais
+  }
 }
 
 // EXERCÍCIO 09
-function comparaDoisNumeros(num1, num2) {
-  // Formato do objeto a ser retornado:
-  // {
-  //   maiorNumero: X,
-  //   maiorDivisivelPorMenor: Y,
-  //   diferenca: Z
-  // }
+function comparaDoisNumeros(num1, num2){
+
 }
+
+//
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
