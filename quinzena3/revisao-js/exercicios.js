@@ -196,7 +196,13 @@ return objeto
 
 // EXERCÍCIO 13
 function imprimeChamada() {
-
+  objeto={
+    nome:"O Diabo Veste Prada",
+    ano: 2006,
+    diretor:"David Frankel",
+    atores:['Meryl Streep', ' Anne Hathaway', ' Emily Blunt', ' Stanley Tucci']
+  }
+  return `Venha assistir ao filme ${objeto.nome}, de ${objeto.ano}, dirigido por ${objeto.diretor} e estrelado por ${objeto.atores}.`
 }
 
 // EXERCÍCIO 14
