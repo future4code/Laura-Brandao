@@ -152,24 +152,35 @@ array.forEach(elemento => {
 
 let segundoMaiorEmenor = [segundoMaiorDeTodos, segundoMenorDeTodos]
 return segundoMaiorEmenor
+//   const novaArray = []
+
+//   for(item of array){
+//     let contador = 0
+//     for (itemComparado of array){
+//       if(item > itemComparado){
+//         contador ++
+//       }
+//     }
+//     novaArray[contador] = item    
+//   }
+// return [novaArray[novaArray.length-2], novaArray[1]]
 }
 
 // EXERCÍCIO 11
-function bubble(array) {//You need Two Loops for Bubble sort
-  for (let i = 0; i < arr.length; i++) {
-    for(let j=0; j < arr.length - 1; j++){
-      if (arr[j] > arr[j + 1]) {
-        let a = arr[j]
-        let b = arr[j + 1]
-        arr[j] = b
-        arr[j + 1] = a
-       }
-     }
+function ordenaArray(array){
+
+const novaArray = []
+
+  for(item of array){
+    let contador = 0
+    for (itemComparado of array){
+      if(item > itemComparado){
+        contador ++
+      }
+    }
+    novaArray[contador] = item    
   }
-  return arr;
-}
-function ordenaArray(array) {
-  bubble(array)
+  return novaArray
 }
 
 // EXERCÍCIO 12
@@ -184,7 +195,9 @@ function imprimeChamada() {
 
 // EXERCÍCIO 14
 function criaRetangulo(lado1, lado2) {
+ const objeto = {
 
+ }
 }
 
 // EXERCÍCIO 15
