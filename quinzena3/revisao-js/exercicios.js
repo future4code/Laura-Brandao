@@ -224,27 +224,56 @@ function anonimizaPessoa(pessoa) {
 
 // EXERCÍCIO 16A
 function maioresDe18(arrayDePessoas) {
-
+  let pessoasMaisDe18 = []
+  arrayDePessoas.forEach(element => {
+    if(element.idade >= 18){
+      pessoasMaisDe18.push(element)
+    }
+  });
+  return pessoasMaisDe18
 }
 
 // EXERCÍCIO 16B
 function menoresDe18(arrayDePessoas) {
-
+  let pessoasMenosDe18 = []
+  arrayDePessoas.forEach(elemento => {
+    if(elemento.idade < 18){
+      pessoasMenosDe18.push(elemento)
+    }
+  });
+  return pessoasMenosDe18
 }
 
 // EXERCÍCIO 17A
 function multiplicaArrayPor2(array) {
-
+  let numerosMultiplicadosPor2 = []
+  for(item of array){
+    numerosMultiplicadosPor2.push(item * 2)
+  }
+  return numerosMultiplicadosPor2
 }
 
 // EXERCÍCIO 17B
 function multiplicaArrayPor2S(array) {
-
+  let numerosMultiplicadosPor2 = []
+  for(item of array){
+    item2 = item * 2
+    numerosMultiplicadosPor2.push(String(item2))
+  }
+  return numerosMultiplicadosPor2
 }
 
 // EXERCÍCIO 17C
 function verificaParidade(array) {
-
+  let numerosParesDaArray = []
+  array.forEach(elemento => {
+    if(elemento % 2 === 0){
+      numerosParesDaArray.push(`${elemento} é par`)
+    }else{
+      numerosParesDaArray.push(`${elemento} é ímpar`)
+    }
+  });
+  return numerosParesDaArray
 }
 
 // EXERCÍCIO 18A
