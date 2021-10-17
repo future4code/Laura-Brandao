@@ -13,6 +13,8 @@
         <div>
             <a href="index.html">Página Inicial</a>
             <a href="ctrl-estoque.html">Produtos</a>
+            <a href="pag-vendas.html">Carrinho de compras</a>
+            <a href="hist-vendas.html">Histórico de compras</a>
             <a href="add-produto.html">Adicionar Produto</a>
             <a href="funcionarios.html">Funcionários</a>
         </div>
@@ -20,29 +22,29 @@
 
     <h2>Adicione produtos à nossa loja!</h2>
 
-    <form class="area" action="">
-        <div class="formulario">
+    <form class="formulario" action="">
+        <div class="campo">
             <label for="link-foto">Link para foto: </label>
             <input type="url" id="link-foto" name="link-foto">
         </div>
         
-        <div class="formulario">
+        <div class="campo">
             <label for="descrição">Descrição do produto: </label>
             <input type="text" id="descrição" name="descrição">
         </div>
         
-        <div class="formulario">
+        <div class="campo">
             <label for="preço">Preço (em R$): </label>
             <input type="text" id="preço" name="preço">
         </div>
         
-        <div class="formulario">
+        <div class="campo">
             <label for="quantidade">Quantidade disponível: </label>
             <input type="number" id="quantidade" name="quantidade">
         </div>
 
-        <div class="form-add">
-            <button class="botao" type="submit">Adicionar</button>
+        <div>
+            <input class="botao" type="submit" name="acao" value="Enviar">
         </div>
     </form>
     <footer>

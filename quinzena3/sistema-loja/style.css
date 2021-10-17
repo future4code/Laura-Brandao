@@ -61,34 +61,118 @@ header a:hover{
     height: 200 px;
     padding: 20px;
 }
+.foto{
+    width: 200px;
+    height: 200 px;
+    padding: 20px;
+}
 h2{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
-table{
+.tabela-estoque{
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.tabela-funcionarios{
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+.historico{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    border-collapse: collapse;
 }
 
+.historico th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #857470;
+    color: white;
+    text-align: center;
+}
+.historico tr:nth-child(even){background-color: #f2f2f2;}
+.pagamento{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 268px;
+    padding: 5px;
+    font-size: 16px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    height: 34px;
+}
+.botao-pag{
+    background: #839189;
+    border: none;
+    padding: 2px 20px;
+    border-radius: 3px;
+    display: block;
+}
+.botao-pag:hover {background-color: #5b7466}
+.botao-pag:active {
+    background-color: #5b7466;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);    
+}
 td{
     text-align: center;
-}
-
-.area{
-    font-family: Arial, Helvetica, sans-serif;
-    color: #1b201d;
-    text-align: center;
+    border: 1px solid black;
 }
 .formulario{
-    margin-bottom: 1em;
-    
+    font-family: Arial, Helvetica, sans-serif;
+    width: 400px;
+    padding: 30px;
+    border:1px solid #ccc;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto 
+    /* display, margin-left e right = servem para centralizar a tabela e o botão */
+}
+.campo{
+    width: 100%;
+    margin: 15px 0;
+    text-align: center;
+}
+.campo label,
+.campo span{
+    padding-left: 10px;
+    font-size: 1.1em;
+    display: block;
+    width: 100%;
+}
+input[type=text],
+input[type=url],
+input[type=number],
+textarea{
+    width: 100%;
+    padding-left: 10px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
 }
 .botao{
     background: #839189;
-    border: 1px solid transparent;
+    border: none;
     padding: 2px 20px;
     border-radius: 3px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.botao:hover {background-color: #5b7466}
+.botao:active {
+    background-color: #5b7466;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);    
 }
 ul{
     list-style-type: none;
@@ -96,6 +180,7 @@ ul{
     padding-left: 0;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    
 }
 .socials {
     text-align: center;
@@ -108,7 +193,6 @@ footer {
     margin: 2rem 0 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-  
 .socials img{
     width: 50px
 }
