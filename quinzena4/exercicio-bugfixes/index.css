@@ -30,7 +30,7 @@ img {
 }
 
 div>p:first-child {
-    display: block;
+    display: inline;
 }
 
 div img {
@@ -74,6 +74,11 @@ div img {
 
 #container-de-descricao>ol {
     padding: 15px 0px;
+}
+#container-de-descricao>p{
+    display: inline-block;
+    width: 180px;
+
 }
 
 #container-para-comprar {
