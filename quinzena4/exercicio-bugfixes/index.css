@@ -30,7 +30,7 @@ img {
 }
 
 div>p:first-child {
-    display: inline;
+    display: block;
 }
 
 div img {
@@ -127,4 +127,7 @@ td button {
 
 #back-button:hover {
     background-color: #635a3d
+}
+.container button{
+    margin-top: 50px;
 }
