@@ -15,6 +15,9 @@ h2 {
     color: white;
     text-align: center;
 }
+td{
+    text-align: center;
+}
 
 input {
     height: 20px;
