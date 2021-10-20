@@ -22,6 +22,8 @@ td{
 input {
     height: 20px;
     width: 500px;
+    border: none;
+    border-bottom: 2px solid;
 }
 
 button:focus {
