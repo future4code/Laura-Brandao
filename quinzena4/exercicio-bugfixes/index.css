@@ -16,6 +16,9 @@ h2 {
     color: white;
     text-align: center;
 }
+table{
+    
+}
 td{
     text-align: center;
 }
@@ -42,6 +45,9 @@ div>p:first-child {
 div img {
     background: transparent;
 }
+div td{
+
+}
 td img{
     width: 50px;
 }
@@ -53,6 +59,8 @@ td img{
     border-radius: 5px;
     font-size: 20px;
     color: white;
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .botao-amarelo:hover {
@@ -115,6 +123,7 @@ div:last-child {
 
 table {
     width: 60%;
+    margin-left: 20%;
 }
 
 td button {
@@ -123,7 +132,7 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
-
+    font-family: 'Roboto', sans-serif;
 }
 td button:hover{
     background-color: #d3ad04 ;
@@ -133,7 +142,6 @@ td button:hover{
     height: 100px;
 }
 
-
 #back-button {
     background-color: white;
     width: 100px;
@@ -142,6 +150,10 @@ td button:hover{
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10%; 
+    margin-left: 45%;
+
 }
 
 #back-button:hover {
