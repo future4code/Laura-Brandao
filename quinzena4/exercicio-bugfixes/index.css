@@ -76,7 +76,13 @@ td img{
     height: 15px;
     width: 15px;
 }
-
+.icone:active{
+    color: black;
+    opacity: 0;
+}
+.icone:hover{
+    opacity: 0.3;
+}
 
 /** 
   *
