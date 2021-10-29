@@ -92,6 +92,99 @@ header{
     width: 70vw;
 }
 
+/* aqui começa media query */
+
+@media screen and (min-device-width : 320px) and (max-device-width : 520px) {
+    /* celulares */
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    header{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logo{
+        padding: 5px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        
+    }
+    .busca{
+        padding: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .icone-play{
+        width: 40px;
+        height: 40px;
+    }
+
+
+
+    .main-index{
+        display: flex;
+        flex-direction: column;
+    }
+    .main-videos{
+        display: flex;
+        flex-direction: column;
+        height: 90vh;
+    }
+  
+}
+
+@media screen and (min-device-width : 481px) and (max-device-width : 800px) {
+    /* tablets */
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    header{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .logo{
+        padding: 5px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        
+    }
+    .busca{
+        padding: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .icone-play{
+        width: 40px;
+        height: 40px;
+    }
+
+
+
+    .main-index{
+        display: flex;
+        flex-direction: column;
+    }
+    .main-videos{
+        display: flex;
+        flex-direction: column;
+        height: 90vh;
+    }
+  
+}
+
+
+/* aqui acaba o media query */
+
 footer{
     display: flex;
     align-items: center;
