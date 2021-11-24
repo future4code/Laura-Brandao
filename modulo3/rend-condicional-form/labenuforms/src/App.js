@@ -15,7 +15,6 @@ class App extends React.Component {
   }
 
   renderizaEtapa = () => {
-    
     switch(this.state.etapa){
       case 1:
         return <Pagina1 />;
@@ -30,11 +29,17 @@ class App extends React.Component {
     }
   }
 
+  renderizaBotao = () => {
+    if(this.state.etapa < 4) {
+      return <button onClick={this.irParaProximaEtapa}>Próxima Etapa</button>
+    }
+  }
+
   render (){
     return (
       <div>
         {this.renderizaEtapa()}
-        <button onClick={this.irParaProximaEtapa}>Próxima Etapa</button>
+        {this.renderizaBotao()}
       </div>
     );
   }
