@@ -8,9 +8,9 @@ export default class Pagina2 extends React.Component {
                 <h1>Etapa 2 - Informações do Ensino Superior</h1>
                 <ol>
                     <li>Qual curso?</li>
-                    <input/>
+                    <input type="text"/>
                     <li>Qual sua unidade de ensino?</li>
-                    <input/>
+                    <input type="text"/>
                 </ol>
             </div>
             

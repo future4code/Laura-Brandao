@@ -3,15 +3,16 @@ import React from "react"
 
 export default class Pagina1 extends React.Component {
     render () {
-        return <div>
+        return (
+        <div>
             <h1>Etapa 1 - Dados Gerais</h1>
             <ol>
                <li>Qual seu nome?</li>
-               <input/>
+               <input type="text"/>
                <li>Qual sua idade?</li> 
-               <input/>
+               <input type="number"/>
                <li>Qual seu email?</li>
-               <input/>
+               <input type="text"/>
                <li>Qual sua escolaridade?</li>
                <select>
                    <option>Ensino médio incompleto</option>
@@ -23,6 +24,6 @@ export default class Pagina1 extends React.Component {
                </select>
             </ol>
         </div>
-        
+        )
     }
 }
