@@ -4,6 +4,11 @@ import Pagina1 from './Components/Pagina1';
 import Pagina2 from './Components/Pagina2';
 import Pagina3 from './Components/Pagina3';
 import PaginaFinal from './Components/PaginaFinal';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  text-align: center;
+`
 
 class App extends React.Component {
   state = {
@@ -37,10 +42,10 @@ class App extends React.Component {
 
   render (){
     return (
-      <div>
+      <Container>
         {this.renderizaEtapa()}
         {this.renderizaBotao()}
-      </div>
+      </Container>
     );
   }
 }
