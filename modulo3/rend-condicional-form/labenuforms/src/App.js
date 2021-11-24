@@ -7,7 +7,11 @@ import PaginaFinal from './Components/PaginaFinal';
 
 class App extends React.Component {
   state = {
-    etapa: 1,
+    etapa: 1
+  }
+
+  irParaProximaEtapa = () =>{
+    this.setState({etapa: this.state.etapa +1})
   }
 
   renderizaEtapa = () => {
@@ -16,30 +20,21 @@ class App extends React.Component {
       case 1:
         return <Pagina1 />;
       case 2:
-        return <Pagina3 />;
+        return <Pagina2 />;
       case 3:
         return <Pagina3 />;
       case 4:
         return <PaginaFinal />;
       default:
-        return <Pagina1 />;
+        return <p>Página não encontrada</p>;
     }
   }
 
   render (){
-
-    // irParaProximaEtapa = () =>{
-
-    // }
-
     return (
       <div>
-        <Pagina1 />
-        <Pagina2 />
-        <Pagina3 />
-        <PaginaFinal />
         {this.renderizaEtapa()}
-        <button>Próxima Etapa</button>
+        <button onClick={this.irParaProximaEtapa}>Próxima Etapa</button>
       </div>
     );
   }
