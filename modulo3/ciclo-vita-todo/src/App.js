@@ -17,6 +17,7 @@ const InputsContainer = styled.div`
   display: grid;
   grid-auto-flow: column;
   gap: 10px;
+  margin-top: 15px;
 `;
 
 class App extends React.Component {
@@ -27,9 +28,13 @@ class App extends React.Component {
     filtro: "",
   };
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+    localStorage.setItem("inputValue", this.state.inputValue)
+  }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.pegarTarefas()
+  }
 
   onChangeInput = (event) => {
     this.setState({ inputValue: event.target.value });
@@ -43,8 +48,24 @@ class App extends React.Component {
     };
 
     const copiaDoEstado = [...this.state.tarefas, novaTarefa];
-    this.setState({ tarefas: copiaDoEstado, inputValue: "" });
+
+    //Salvando no Local Storage
+    localStorage.setItem("historicoTarefas", JSON.stringify(copiaDoEstado))
+
+    this.setState({ tarefas: copiaDoEstado });
+    this.limpar()
   };
+  
+  limpar = () => {
+    this.setState({ inputValue: "" })
+  };
+
+  //Função que armazena o histórico de tarefas e mantém elas no estado
+  pegarTarefas = () => {
+    const task = 
+      JSON.parse(localStorage.getItem("historicoTarefas")); 
+      this.setState({ tarefas: task });
+  }
 
   selectTarefa = (id) => {
     const selecionaTarefa = this.state.tarefas.map((tarefa) => {
