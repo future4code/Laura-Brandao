@@ -5,7 +5,6 @@ import axios from "axios";
 export default class TelaCadastro extends React.Component {
     state = {
         playlist: "",
-
     }
 
 // função de input controlado, juntamente com o value e on change lá na tag input

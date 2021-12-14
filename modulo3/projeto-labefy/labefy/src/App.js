@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-import axios from "axios";
 import TelaCadastro from "./Components/TelaCadastro";
 import TelaPlaylist from "./Components/TelaPlaylist";
 
