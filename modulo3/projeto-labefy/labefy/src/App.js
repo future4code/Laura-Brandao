@@ -1,6 +1,7 @@
 import React from "react";
 import TelaCadastro from "./Components/TelaCadastro";
 import TelaPlaylist from "./Components/TelaPlaylist";
+import TelaDescricaoPlaylist from "./Components/TelaDescricaoPlaylist";
 
 export default class App extends React.Component{
 
@@ -15,7 +16,9 @@ export default class App extends React.Component{
       case "cadastro":
         return <TelaCadastro irParaLista={this.irParaLista}/>
       case "lista":
-        return <TelaPlaylist irParaCadastro={this.irParaCadastro}/>
+        return <TelaPlaylist irParaCadastro={this.irParaCadastro} irParaDescricao={this.irParaDescricao}/>
+      case "descricao":
+        return <TelaDescricaoPlaylist irParaLista={this.irParaLista} irParaCadastro={this.irParaCadastro} />
       default:
         return <div>Erro! Página não encontrada :(</div>
     }
@@ -29,6 +32,11 @@ export default class App extends React.Component{
 
   irParaLista = () => {
     this.setState({telaAtual: "lista"})
+  }
+
+  irParaDescricao = () => {
+    console.log("teste")
+   this.setState({telaAtual: "descricao"})
   }
 
   render() {

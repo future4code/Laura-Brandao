@@ -57,6 +57,11 @@ export default class TelaPlaylist extends React.Component{
         })
     }
 
+    logTeste = () => {
+        console.log("aaa")
+    }
+
+
     render(){
 
         const listaPlaylists = this.state.playlists.map((playlist) => {
@@ -65,6 +70,7 @@ export default class TelaPlaylist extends React.Component{
                     {playlist.name}
                     {/* quando se passa um parâmetro na função, o onClick deve ficar da forma igual abaixo */}
                     <button onClick={() => this.deletarPlaylist(playlist.id)}>X</button>
+                    <button onClick={this.props.irParaDescricao}>V</button>
                 </CardPlaylist>
             )
           })
