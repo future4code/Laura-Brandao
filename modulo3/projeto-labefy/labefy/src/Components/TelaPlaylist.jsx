@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 
+const axiosConfig = {
+    headers: {
+      Authorization: "laura-lanna-joy",
+    },
+  };
+
 const CardPlaylist = styled.div`
     display: flex;
     justify-content: space-between;
@@ -25,11 +31,7 @@ export default class TelaPlaylist extends React.Component{
 
     pegarPlaylists = () => {
         const URL =  "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
-        axios.get(URL,{
-            headers: {
-                Authorization: "laura-lanna-joy"
-            }
-        })
+        axios.get(URL, axiosConfig)
         .then((res) => {
             console.log(res.data.result.list)
             this.setState({playlists: res.data.result.list})
@@ -42,11 +44,7 @@ export default class TelaPlaylist extends React.Component{
     deletarPlaylist = (id) => {
         // aqui, foi adicionado ${id}, para receber o id das playlists a serem deletadas
         const URL = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`
-        axios.delete(URL,{
-            headers: {
-                Authorization: "laura-lanna-joy"
-            }
-        })
+        axios.delete(URL, axiosConfig)
         .then((res) => {
             alert("Playlist excluída com sucesso!")
             this.pegarPlaylists()
@@ -57,11 +55,6 @@ export default class TelaPlaylist extends React.Component{
         })
     }
 
-    logTeste = () => {
-        console.log("aaa")
-    }
-
-
     render(){
 
         const listaPlaylists = this.state.playlists.map((playlist) => {
@@ -70,7 +63,7 @@ export default class TelaPlaylist extends React.Component{
                     {playlist.name}
                     {/* quando se passa um parâmetro na função, o onClick deve ficar da forma igual abaixo */}
                     <button onClick={() => this.deletarPlaylist(playlist.id)}>X</button>
-                    <button onClick={this.props.irParaDescricao}>V</button>
+                    <button onClick={() => this.props.irParaDescricao(playlist.id)}>V</button>
                 </CardPlaylist>
             )
           })

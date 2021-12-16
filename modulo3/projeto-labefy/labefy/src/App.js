@@ -6,8 +6,8 @@ import TelaDescricaoPlaylist from "./Components/TelaDescricaoPlaylist";
 export default class App extends React.Component{
 
   state = {
-    telaAtual: "cadastro"
-
+    telaAtual: "cadastro",
+    playlistId: ""
   }
 
   // função com renderização condicional usando curto circuito, que faz as telas mudarem
@@ -18,7 +18,7 @@ export default class App extends React.Component{
       case "lista":
         return <TelaPlaylist irParaCadastro={this.irParaCadastro} irParaDescricao={this.irParaDescricao}/>
       case "descricao":
-        return <TelaDescricaoPlaylist irParaLista={this.irParaLista} irParaCadastro={this.irParaCadastro} />
+        return <TelaDescricaoPlaylist irParaLista={this.irParaLista} irParaCadastro={this.irParaCadastro} pegarPlaylist={this.pegarPlaylist}/>
       default:
         return <div>Erro! Página não encontrada :(</div>
     }
@@ -34,10 +34,17 @@ export default class App extends React.Component{
     this.setState({telaAtual: "lista"})
   }
 
-  irParaDescricao = () => {
-    console.log("teste")
+  pegarPlaylist = () => {
+    return this.state.playlistId
+  }
+
+  irParaDescricao = (id) => {
+    console.log("irParaDescricao")
+    console.log(id)
+    this.setState({playlistId: id})
    this.setState({telaAtual: "descricao"})
   }
+
 
   render() {
     return (

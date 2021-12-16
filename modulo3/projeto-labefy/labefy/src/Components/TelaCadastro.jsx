@@ -2,6 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 
+const axiosConfig = {
+  headers: {
+    Authorization: "laura-lanna-joy",
+  },
+};
+
 export default class TelaCadastro extends React.Component {
     state = {
         playlist: "",
@@ -14,23 +20,17 @@ export default class TelaCadastro extends React.Component {
 
     // função que vai criar o cadastro usando api
     criarCadastro = () => {
-        console.log(this.state.playlist)
         const URL = "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
         const body = {
             name: this.state.playlist
         }
-        axios.post(URL,body,{
-            headers: {
-                Authorization: "laura-lanna-joy"
-            }
-        })
+        axios.post(URL,body,axiosConfig)
         .then((res) =>{
             alert("Playlist criada com sucesso! ;)")
             this.setState({playlist: ""})
         })
         .catch((err) => {
             alert(err.response.data.message)
-            console.log ()
         })
     }
 
