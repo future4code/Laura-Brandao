@@ -37,6 +37,8 @@ export default class TelaCadastro extends React.Component {
   render() {
     return (
       <div>
+        <h2>Bem-vindos ao Labefy!</h2>
+        <label>Cadastre sua playlist:</label>
         <input
           placeholder="Insira o nome da sua playlist"
           type="text"

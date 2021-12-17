@@ -64,37 +64,54 @@ export default class TelaDescricaoPlaylist extends React.Component {
     try {
       await axios.delete(URL, axiosConfig);
       alert("Música deletada com sucesso! :)");
-      this.getPlaylist(id)
+      this.getPlaylist(id);
     } catch (error) {
       alert("Erro ao deletar música!");
     }
   };
 
+  // função que faz a primeira letra da palavra ficar maiúscula
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   render() {
     const listaDeMusicasMapeada = this.state.listaDeMusicas.map((musica) => {
       return (
         <div key={musica.id}>
-          <div></div>
-          <div>{musica.name}</div>
-          <div>{musica.artist}</div>
-          <div>{musica.url}</div>
-          <button onClick={() => this.deletarMusica(this.props.pegarPlaylistId(), musica.id)}>X</button>
+          <div>{this.capitalizeFirstLetter(musica.name)}</div>
+          <div>{this.capitalizeFirstLetter(musica.artist)}</div>
+          <div>
+            <audio controls>
+              <source src={musica.url} />
+            </audio>
+          </div>
+          <button
+            onClick={() =>
+              this.deletarMusica(this.props.pegarPlaylistId(), musica.id)
+            }
+          >
+            X
+          </button>
         </div>
       );
     });
 
     return (
       <div>
+        <label>Música:</label>
         <input
           placeholder="Digite o nome da música"
           value={this.state.musica}
           onChange={this.handleMusica}
         />
+        <label>Artista ou Banda:</label>
         <input
           placeholder="Digite o nome do artista ou banda"
           value={this.state.artista}
           onChange={this.handleArtista}
         />
+        <label>URL:</label>
         <input
           placeholder="Insira a url da música"
           value={this.state.url}
