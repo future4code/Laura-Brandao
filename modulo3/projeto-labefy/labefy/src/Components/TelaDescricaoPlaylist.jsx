@@ -13,9 +13,13 @@ export default class TelaDescricaoPlaylist extends React.Component {
     musica: "",
     artista: "",
     url: "",
-    playlist: [],
     listaDeMusicas: [],
   };
+
+  componentDidMount() {
+    this.getPlaylist(this.props.pegarPlaylistId());
+  }
+
   handleMusica = (e) => {
     this.setState({ musica: e.target.value });
   };
@@ -28,20 +32,16 @@ export default class TelaDescricaoPlaylist extends React.Component {
 
   getPlaylist = async (id) => {
     const URL = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`;
-    try{
+    try {
       const res = await axios.get(URL, axiosConfig);
-      console.log(res.data.result.tracks)
+      console.log(res.data.result.tracks);
       this.setState({ listaDeMusicas: res.data.result.tracks });
-    }
-    catch(error){
-      console.log(error)
+    } catch (error) {
+      console.log(error.response);
     }
   };
 
   adicionarMusica = async (id) => {
-    console.log("adicionarMusica");
-    console.log(id);
-    console.log(this.state.listaDeMusicas);
     const URL = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks`;
     const body = {
       name: this.state.musica,
@@ -51,15 +51,38 @@ export default class TelaDescricaoPlaylist extends React.Component {
     try {
       await axios.post(URL, body, axiosConfig);
       alert("Música adicionada com sucesso! :)");
-      this.setState({musica:"", artista:"", url:""})
-      this.getPlaylist(id)
-      
+      // setado o estado para "" para que os inputs fiquem vazios, após a música ser adicionada
+      this.setState({ musica: "", artista: "", url: "" });
+      this.getPlaylist(id);
     } catch (error) {
-      alert(error.response.data.message);
+      alert("Erro ao adicionar música!");
+    }
+  };
+
+  deletarMusica = async (id, musicaId) => {
+    const URL = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}/tracks/${musicaId}`;
+    try {
+      await axios.delete(URL, axiosConfig);
+      alert("Música deletada com sucesso! :)");
+      this.getPlaylist(id)
+    } catch (error) {
+      alert("Erro ao deletar música!");
     }
   };
 
   render() {
+    const listaDeMusicasMapeada = this.state.listaDeMusicas.map((musica) => {
+      return (
+        <div key={musica.id}>
+          <div></div>
+          <div>{musica.name}</div>
+          <div>{musica.artist}</div>
+          <div>{musica.url}</div>
+          <button onClick={() => this.deletarMusica(this.props.pegarPlaylistId(), musica.id)}>X</button>
+        </div>
+      );
+    });
+
     return (
       <div>
         <input
@@ -78,9 +101,15 @@ export default class TelaDescricaoPlaylist extends React.Component {
           onChange={this.handleUrl}
         />
         <button
-          onClick={() => this.adicionarMusica(this.props.pegarPlaylist())}>
+          onClick={() => this.adicionarMusica(this.props.pegarPlaylistId())}
+        >
           Adicionar música
         </button>
+
+        {listaDeMusicasMapeada}
+
+        <hr />
+
         <button onClick={this.props.irParaCadastro}>
           Voltar para tela inicial
         </button>

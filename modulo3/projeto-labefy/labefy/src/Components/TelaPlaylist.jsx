@@ -26,14 +26,13 @@ export default class TelaPlaylist extends React.Component{
     }
 
     componentDidMount() {
-        this.pegarPlaylists()
+        this.loadPlaylists()
     }
 
-    pegarPlaylists = () => {
+    loadPlaylists = () => {
         const URL =  "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists"
         axios.get(URL, axiosConfig)
         .then((res) => {
-            console.log(res.data.result.list)
             this.setState({playlists: res.data.result.list})
         })
         .catch((err) => {
@@ -47,7 +46,7 @@ export default class TelaPlaylist extends React.Component{
         axios.delete(URL, axiosConfig)
         .then((res) => {
             alert("Playlist excluída com sucesso!")
-            this.pegarPlaylists()
+            this.loadPlaylists()
             // chamada a função para a lista ficar atualizada após exclusão de uma playlist
         })
         .catch((err) =>{
@@ -55,15 +54,20 @@ export default class TelaPlaylist extends React.Component{
         })
     }
 
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+      
+
     render(){
 
         const listaPlaylists = this.state.playlists.map((playlist) => {
             return  (
                 <CardPlaylist key={playlist.id}>
-                    {playlist.name}
+                    {this.capitalizeFirstLetter(playlist.name)}
                     {/* quando se passa um parâmetro na função, o onClick deve ficar da forma igual abaixo */}
-                    <button onClick={() => this.deletarPlaylist(playlist.id)}>X</button>
-                    <button onClick={() => this.props.irParaDescricao(playlist.id)}>V</button>
+                    <button onClick={() => this.deletarPlaylist(playlist.id)}>Excluir</button>
+                    <button onClick={() => this.props.irParaDescricao(playlist.id)}>+</button>
                 </CardPlaylist>
             )
           })

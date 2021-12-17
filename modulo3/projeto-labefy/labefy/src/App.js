@@ -18,7 +18,7 @@ export default class App extends React.Component{
       case "lista":
         return <TelaPlaylist irParaCadastro={this.irParaCadastro} irParaDescricao={this.irParaDescricao}/>
       case "descricao":
-        return <TelaDescricaoPlaylist irParaLista={this.irParaLista} irParaCadastro={this.irParaCadastro} pegarPlaylist={this.pegarPlaylist}/>
+        return <TelaDescricaoPlaylist irParaLista={this.irParaLista} irParaCadastro={this.irParaCadastro} pegarPlaylistId={this.pegarPlaylistId}/>
       default:
         return <div>Erro! Página não encontrada :(</div>
     }
@@ -34,7 +34,7 @@ export default class App extends React.Component{
     this.setState({telaAtual: "lista"})
   }
 
-  pegarPlaylist = () => {
+  pegarPlaylistId = () => {
     return this.state.playlistId
   }
 
