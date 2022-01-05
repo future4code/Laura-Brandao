@@ -82,12 +82,10 @@ export default class TelaCadastro extends React.Component {
     playlist: "",
   };
 
-  // função de input controlado, juntamente com o value e on change lá na tag input
   handlePlaylist = (event) => {
     this.setState({ playlist: event.target.value });
   };
 
-  // função que vai criar o cadastro usando api
   criarCadastro = () => {
     const URL =
       "https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists";

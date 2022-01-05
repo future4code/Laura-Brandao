@@ -11,7 +11,6 @@ export default class App extends React.Component {
     playlistName: "",
   };
 
-  // função com renderização condicional usando curto circuito, que faz as telas mudarem
   escolheTela = () => {
     switch (this.state.telaAtual) {
       case "cadastro":
@@ -37,7 +36,6 @@ export default class App extends React.Component {
     }
   };
 
-  // aqui terão funções para mudar de telas
 
   irParaCadastro = () => {
     this.setState({ telaAtual: "cadastro" });
