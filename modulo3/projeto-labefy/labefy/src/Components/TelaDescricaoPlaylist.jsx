@@ -139,7 +139,6 @@ export default class TelaDescricaoPlaylist extends React.Component {
     try {
       await axios.post(URL, body, axiosConfig);
       alert("Música adicionada com sucesso! :)");
-      // setado o estado para "" para que os inputs fiquem vazios, após a música ser adicionada
       this.setState({ musica: "", artista: "", url: "" });
       this.getPlaylist(id);
     } catch (error) {
@@ -158,7 +157,6 @@ export default class TelaDescricaoPlaylist extends React.Component {
     }
   };
 
-  // função que faz a primeira letra da palavra ficar maiúscula
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }

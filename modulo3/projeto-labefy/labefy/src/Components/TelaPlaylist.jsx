@@ -82,7 +82,6 @@ const axiosConfig = {
 };
 
 export default class TelaPlaylist extends React.Component {
-  // estado criado para guardar as playlists
   state = {
     playlists: [],
   };
@@ -105,21 +104,18 @@ export default class TelaPlaylist extends React.Component {
   };
 
   deletarPlaylist = (id) => {
-    // aqui, foi adicionado ${id}, para receber o id das playlists a serem deletadas
     const URL = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${id}`;
     axios
       .delete(URL, axiosConfig)
       .then((res) => {
         alert("Playlist excluída com sucesso!");
         this.loadPlaylists();
-        // chamada a função para a lista ficar atualizada após exclusão de uma playlist
       })
       .catch((err) => {
         alert("Ocorreu um erro! Tente novamente!");
       });
   };
 
-  // função que faz a primeira letra da palavra ficar maiúscula
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -129,7 +125,6 @@ export default class TelaPlaylist extends React.Component {
       return (
         <CardPlaylist key={playlist.id}>
           {this.capitalizeFirstLetter(playlist.name)}
-          {/* quando se passa um parâmetro na função, o onClick deve ficar da forma igual abaixo */}
 
           <div>
             <Button1 onClick={() => this.deletarPlaylist(playlist.id)}>
