@@ -45,29 +45,51 @@ const ImageLoad = styled.img`
   height: 50px;
 `;
 
-const LikeButton = styled.img`
-  height: 30px;
-`;
-const LikeButtonContainer = styled.button`
-  background-color: black;
-  color: white;
-  font-size: 10px;
-  padding: 10px 40px;
-  border-radius: 5px;
-  margin: 10px 0px;
+const DislikeButton = styled.button`
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border: none;
+  color: red;
+  position: relative;
+  overflow: hidden;
+  font-size: 50px;
   cursor: pointer;
-  &:disabled {
-    color: grey;
-    opacity: 0.7;
-    cursor: default;
+  transform: scale(0.7);
+  transition: all 0.2s ease 0s;
+  box-shadow: rgb(205 205 205 / 73%) 0px 0px 15px 0px;
+  :hover {
+    color: yellow;
+    background-color: red;
+    transform: scale(0.8);
+  }
+`;
+const LikeButton = styled.button`
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  border: none;
+  color: green;
+  position: relative;
+  overflow: hidden;
+  font-size: 50px;
+  cursor: pointer;
+  transform: scale(0.7);
+  transition: all 0.2s ease 0s;
+  box-shadow: rgb(205 205 205 / 73%) 0px 0px 15px 0px;
+  :hover {
+    color: white;
+    background-color: purple;
+    transform: scale(0.8);
   }
 `;
 
 const TextContainer = styled.div`
+  margin-top: 5px;
   text-align: center;
   text-shadow: 0.1em 0.1em 0.2em black;
   position: relative;
-  font-family: cursive;
+  font-family: Roboto;
   width: 400px;
   font-size: 12px;
 `;
@@ -126,8 +148,12 @@ const MainCard = () => {
             <p>{profile.bio}</p>
           </TextContainer>
           <ContainerButton>
-            <LikeButtonContainer onClick={() => choosePerson(true)}>Like</LikeButtonContainer>
-            <LikeButtonContainer onClick={() => choosePerson(false)}> Dislike</LikeButtonContainer>
+            <LikeButton onClick={() => choosePerson(true)}>
+              ♥️
+            </LikeButton>
+            <DislikeButton onClick={() => choosePerson(false)}>
+              X
+            </DislikeButton>
           </ContainerButton>
         </Container>
       )}

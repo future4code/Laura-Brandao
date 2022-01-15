@@ -5,17 +5,15 @@ import ListCard from "./Components/ListCard/ListCard";
 import Header from "./Components/Header/Header";
 import index from "./index.css";
 import axios from "axios";
-import ReactDOM from "react-dom";
-import Button from "@material-ui/core/Button";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: linear-gradient(to right top, #76b9b3,#95b1ae, #9dadd6, #a5abbd);
-  width: 100vw;
-  height: 100vh; ;
-`;
+  justify-content: center;
+  background-image: linear-gradient(to right, #e2cdf6, #ddccf7, #d9caf7, #d3c9f8, #cec8f8, #c6cdfc, #bfd2fe, #b9d6ff, #b3e0ff, #b2e9ff, #b6f2ff, #bff9fb);
+  height: 100vh
+  `;
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState("mainCard");
@@ -26,17 +24,6 @@ const App = () => {
     } else if (currentPage === "listCard") {
       return <ListCard />;
     }
-  };
-
-  const clearMatches = () => {
-    axios
-      .put(
-        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/laura-lanna-joy/clear"
-      )
-      .then((res) => {
-        window.alert("A lista de matches foi resetada!");
-      })
-      .catch((err) => {});
   };
 
   const changePage = (currentPage) => {
@@ -51,9 +38,6 @@ const App = () => {
     <Container>
       <Header changePage={changePage} getIsMainCard={getIsMainCard} />
       {renderCurrentPage()}
-      <Button onClick={() => clearMatches()} variant="contained" color="primary">
-        Limpar swipes e matches
-      </Button>
     </Container>
   );
 };

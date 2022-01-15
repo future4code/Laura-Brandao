@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import Button from "@material-ui/core/Button";
 
-const MainCardContainer = styled.div`
+const MainListContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +16,24 @@ const MainCardContainer = styled.div`
   background-color: white;
   margin-bottom: 10px;
   box-shadow: rgb(117 117 117 / 77%) 0px 4px 10px 0px;
+  text-align: left;
+`;
+const ContainerButton = styled.div`
+  position: fixed;
+  align-self: flex-end;
+  margin-right: 5px;
 
+`;
+const ImageProfile = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: rgb(117 117 117 / 77%) 0px 4px 10px 0px;
+`;
+const MatchName = styled.span`
+  margin-left: 1em;
+  font-family: Roboto;
+  font-size: 24px;
 `;
 
 const ListCard = () => {
@@ -32,7 +50,6 @@ const ListCard = () => {
       )
       .then((res) => {
         setMatches(res.data.matches);
-        
       })
       .catch((error) => {
         console.log(error);
@@ -42,15 +59,38 @@ const ListCard = () => {
   const matchesMapped = matches.map((match) => {
     return (
       <div key={match.id}>
-        <p>{match.name}</p>
+        <ImageProfile src={match.photo} />
+        <MatchName>{match.name}</MatchName>
       </div>
     );
   });
 
+  const clearMatches = () => {
+    axios
+      .put(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/laura-lanna-joy/clear"
+      )
+      .then((res) => {
+        window.alert("A lista de matches foi resetada!");
+        getMatches();
+
+      })
+      .catch((err) => {});
+  };
+
   return (
-    <MainCardContainer>
-      {matches && matchesMapped}
-    </MainCardContainer>
+    <MainListContainer>
+      {matches.length === 0 ? (<div><p>Que pena! Você não tem nenhum match! 💔 </p></div>): (matches && matchesMapped)}
+      <ContainerButton>
+        <Button
+          onClick={() => clearMatches()}
+          variant="contained"
+          color="warning"
+        >
+          🗑️
+        </Button>
+      </ContainerButton>
+    </MainListContainer>
   );
 };
 
