@@ -1,7 +1,8 @@
 import axios from "axios";
 import react from "react";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -9,6 +10,11 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  color: white;
+  font-weight: bold;
+  /* border: 3px solid #f1f1f1; */
+  padding: 20px;
 `;
 
 function ApplicationFormPage() {
@@ -57,6 +63,11 @@ function ApplicationFormPage() {
       .catch((err) => {console.log(err)})
   };
 
+  const history = useHistory()
+  const goBack = () => {
+    history.goBack()
+  }
+
   return (
     <Container>
       <h1>Inscreva-se para uma viagem</h1>
@@ -94,7 +105,7 @@ function ApplicationFormPage() {
         <option>Escolha um país</option>
       </select>
       <div>
-        <button>Voltar</button>
+        <button onClick={goBack}>Voltar</button>
         <button onClick={() => applyTrip()}>Enviar</button>
       </div>
     </Container>
