@@ -1,8 +1,8 @@
 import React from "react";
-import index from "./index.css";
 import styled from "styled-components";
 import Router from "./Route/Router";
 import Background4 from "./Img/4.png";
+import { GlobalStyles } from "./GlobalStyles";
 
 
 const MainContainer = styled.div`
@@ -11,13 +11,15 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-image: url(${Background4});
-  background-repeat: repeat-y;
+  background-repeat: no-repeat;
+  background-size: cover ;
   
 `;
 
 function App() {
   return (
     <MainContainer>
+      <GlobalStyles />
       <Router />
     </MainContainer>
   );

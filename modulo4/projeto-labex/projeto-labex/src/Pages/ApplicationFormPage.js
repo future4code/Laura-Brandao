@@ -1,8 +1,9 @@
 import axios from "axios";
 import react from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { BASE_URL } from "../Utils/Constants";
 
 const Container = styled.div`
   display: flex;
@@ -22,6 +23,8 @@ function ApplicationFormPage() {
   const [ageInput, setAgeInput] = useState("");
   const [candInput, setCandInput] = useState("");
   const [profInput, setProfInput] = useState("");
+  const [listTrips, setListTrips] = useState([]);
+  const [index, setIndex] = useState(0);
 
   const handleNameInput = (e) => {
     setNameInput(e.target.value);
@@ -39,44 +42,71 @@ function ApplicationFormPage() {
   const resetInput = () => {
     setNameInput("");
     setAgeInput("");
-    setCandInput("")
+    setCandInput("");
     setProfInput("");
+  };
 
-  }
+  useEffect(() => {
+    getTrips();
+  }, []);
 
-  // TODO faltando id das viagens e value do country
-  const applyTrip = () => {
+  const getTrips = () => {
+    axios
+      .get(`${BASE_URL}/trips`)
+      .then((res) => {
+        setListTrips(res.data.trips);
+        console.log(res.data.trips)
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
+  // TODO  usar api do governo para pegar todos os paises, faz map e passar os dados para o body da requisição
+  const applyTrip = (id) => {
     const body = {
       name: nameInput,
       age: ageInput,
       applicationText: candInput,
       profession: profInput,
-      country: "Brasil", 
+      country: "Brasil",
     };
 
     axios
-      .post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/laura-lanna-joy/trips/FCG50K7QshtgtjSKhOry/apply", body)
+      .post(`${BASE_URL}/trips/${id}/apply`, body)
       .then((res) => {
-        console.log(res.data)
-        resetInput()
+        console.log(res.data);
+        resetInput();
       })
-      .catch((err) => {console.log(err)})
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const history = useHistory()
+  const handleSelect = (e) => {
+    setIndex(e.target.value);
+    console.log(e.target.value)
+  };
+  
+
+  const selectTrips = () => 
+    <select onChange={handleSelect}>
+      {listTrips.map((trip, index) => (
+        <option value={index}>{trip.name}</option>
+      ))}
+    </select>;
+  
+
+  const history = useHistory();
+
   const goBack = () => {
-    history.goBack()
-  }
+    history.goBack();
+  };
 
   return (
     <Container>
       <h1>Inscreva-se para uma viagem</h1>
-      <select>
-        <option>Escolha uma viagem</option>
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-      </select>
+      {selectTrips()}
       <input
         type="text"
         placeholder="Nome"
@@ -103,10 +133,11 @@ function ApplicationFormPage() {
       />
       <select>
         <option>Escolha um país</option>
+        <option>Brasil</option>
       </select>
       <div>
         <button onClick={goBack}>Voltar</button>
-        <button onClick={() => applyTrip()}>Enviar</button>
+        <button onClick={() => applyTrip(listTrips[index].id)}>Enviar</button>
       </div>
     </Container>
   );

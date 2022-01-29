@@ -22,6 +22,9 @@ function CreateTripPage() {
         history.goBack()
     }
 
+    const createTrip = () => {
+        
+    }
 
   return (
     <Container>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { BASE_URL } from "../Utils/Constants";
 
 const CardTrip = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ const CardTrip = styled.div`
   justify-content: center;
   border: 1px solid;
   width: 50vw;
-  height: 50vh;
+  height: 30vh;
   margin: 2px;
   background-color: rgba(0, 0, 0, 0.4);
 `;
@@ -44,14 +45,12 @@ function ListTripsPage() {
 
   const getTrips = () => {
     axios
-      .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/laura-lanna-joy/trips"
-      )
+      .get(`${BASE_URL}/trips`)
       .then((res) => {
         setListTrips(res.data.trips);
       })
       .catch((err) => {
-        console.log(err);
+        alert(err);
       });
   };
 
@@ -83,7 +82,7 @@ function ListTripsPage() {
     history.push("/");
   };
   const goToApplication = () => {
-    history.push("/trips/application");
+    history.push("/trips/application/");
   };
 
   return (
@@ -94,7 +93,7 @@ function ListTripsPage() {
           <button onClick={goToApplication}>Inscrever</button>
         </ButtonContainer>
         <h2>Lista de viagens</h2>
-        {listTrips.length === 0 ? (<p>Carregando...</p>) : (listTripsMapped)}
+        {listTrips.length === 0 ? <p>Carregando...</p> : listTripsMapped}
       </Container>
     </MainContainer>
   );
