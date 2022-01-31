@@ -1,44 +1,134 @@
 import axios from "axios";
 import react from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { BASE_URL } from "../Utils/Constants";
+import { setToken, getToken } from "../Utils/localStorage";
+import useForm from "../hooks/useForm";
+
+const MainContainer = styled.div`
+  height: 100vh;
+  width: 100vw;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4vh;
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+    select {
+      height: 5vh;
+      margin: 5px;
+      border-radius: 10px;
+    }
+    input {
+      height: 5vh;
+      margin: 5px;
+      border-radius: 10px;
+    }
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 500px;
+  margin: 20px 0 10px 0;
+`;
+
+const Button = styled.button`
+  width: 160px;
+  height: 50px;
+  border-radius: 5px;
+  color: white;
+  background-color: #948e99;
+  :hover {
+    background-color: #51425f;
+  }
+`;
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  
+  const history = useHistory();
 
-  const onChangeEmail = ({ target }) => {
-    setEmail(target.value);
-  };
-  const onChangePassword = ({ target }) => {
-    setPassword(target.value);
+  const goBack = () => {
+    history.goBack();
   };
 
-  const resetInput = () => {
-      setEmail("");
-      setPassword("")
+  if (getToken()) {
+    history.push("/admin/trips/list");
   }
 
-  const onSubmitLogin = () => {
-    axios.post(`${BASE_URL}/login`, {
-      email,
-      password,
-    }).then(({ data }) => {
-        localStorage.setItem("tolken", data.token);
-        console.log(data)
-    }).catch((err) => { console.log (err)})
+  const { form, onChange } = useForm({
+    email: "laura@gmail.com.br",
+    password: "123456",
+  });
+
+  const onSubmitLogin = (event) => {
+    event.preventDefault();
+
+    axios
+      .post(`${BASE_URL}/login`, form)
+      .then(({ data }) => {
+        setToken(data.token);
+        console.log(data);
+        history.push("admin/trips/list");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
-    <div>
+    <MainContainer>
       <h1>Login</h1>
-      <input placeholder="E-mail" value={email} onChange={onChangeEmail} />
-      <input placeholder="Senha" value={password} onChange={onChangePassword} />
-      <button>Voltar</button>
-      <button onClick={onSubmitLogin}>Entrar</button>
-    </div>
+      <Container>
+        <form onSubmit={onSubmitLogin}>
+          <input
+            name={"email"}
+            value={form.email}
+            onChange={onChange}
+            placeholder={"email"}
+            m="3"
+            type={"email"}
+            required
+            color="white"
+          />
+          <input
+            name={"password"}
+            value={form.password}
+            onChange={onChange}
+            placeholder={"senha"}
+            m="3"
+            pattern={"^.{6,}"}
+            title={"A senha deve conter no mínimo 6 caracteres"}
+            type={"password"}
+            required
+            color="white"
+          />
+        </form>
+      </Container>
+      <ButtonContainer>
+        <Button onClick={goBack}>Voltar</Button>
+        <Button type="submit" onClick={onSubmitLogin}>
+          Entrar
+        </Button>
+      </ButtonContainer>
+    </MainContainer>
   );
 }
 

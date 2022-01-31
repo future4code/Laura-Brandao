@@ -28,24 +28,36 @@ const ButtonContainer = styled.div`
   justify-content: space-around;
 `;
 
+const Button = styled.button`
+  width: 160px;
+  height: 50px;
+  border-radius: 5px;
+  color: white;
+  background-color: #948e99;
+   :hover{
+    background-color: #51425f;
+   }
+`;
+
 function HomePage() {
+
   const history = useHistory();
 
   const goToListTrip = () => {
     history.push("/trips/list");
   };
 
-  const goToAdmin = () => {
-    history.push("/admin/trips/list");
+  const goToLogin = () => {
+    history.push("/login");
   };
 
   return (
     <MainContainer>
       <Container>
-        <h1>Labex</h1>
+        <h1>LabeX</h1>
         <ButtonContainer>
-          <button onClick={goToListTrip}>Ver viagens</button>
-          <button onClick={goToAdmin}>Área do Admin</button>
+          <Button onClick={goToListTrip}>Ver viagens</Button>
+          <Button onClick={goToLogin}>Área do Admin</Button>
         </ButtonContainer>
       </Container>
     </MainContainer>
