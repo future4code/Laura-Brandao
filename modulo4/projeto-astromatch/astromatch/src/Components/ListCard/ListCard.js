@@ -52,7 +52,6 @@ const ListCard = () => {
         setMatches(res.data.matches);
       })
       .catch((error) => {
-        console.log(error);
       });
   };
 
@@ -80,7 +79,7 @@ const ListCard = () => {
 
   return (
     <MainListContainer>
-      {matches.length === 0 ? (<div><p>Que pena! Você não tem nenhum match! 💔 </p></div>): (matches && matchesMapped)}
+      {matches.length === 0 ? (<div><p>Que pena! Você não tem nenhum match! 💔 </p></div>) : (matches && matchesMapped)}
       <ContainerButton>
         <Button
           onClick={() => clearMatches()}

@@ -130,7 +130,6 @@ const MainCard = () => {
         loadProfile();
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
