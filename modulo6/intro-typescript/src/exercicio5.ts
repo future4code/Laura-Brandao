@@ -8,7 +8,7 @@ function checaRenovacaoRG():string {
  
     if(idade <= 20 ) {
        return tempoCarteira >= 5 ? "passou dos 5 anos precisa renovar" : "ainda não passou os 5 anos"
- 
+
    }else if(anoNascimento >= 20 || anoNascimento <= 49) {
        return tempoCarteira >= 10 ? "passou dos 10 anos precisa renovar" : "ainda não passou os 10 anos"
  
