@@ -1,0 +1,18 @@
+{
+  "name": "aprofundamento-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "exercicio1": "clear && tsc && node ./build/exercicio1.js",
+    "exercicio2": "clear && tsc && node ./build/exercicio2.js",
+    "exercicio3": "clear && tsc && node ./build/exercicio3.js",
+    "exercicio4": "clear && tsc && node ./build/index.js",
+    "exercicio5": "clear && tsc && node ./build/index.js"
+  },
+  "author": "Laura",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.6.2"
+  }
+}
