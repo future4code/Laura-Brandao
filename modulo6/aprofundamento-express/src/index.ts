@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import cors from 'cors'
 import { toDos } from "./data";
 import {v4 as generateId } from 'uuid'
 
@@ -7,6 +8,7 @@ import { AddressInfo } from "net";
 const app = express();
 
 app.use(express.json());
+app.use(cors())
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
@@ -43,4 +45,6 @@ app.post("/newTask", (req: Request, res: Response) => {
         title: "delectus aut autem",
         complete: false
     } 
+    console.log(newTask)
+    res.status(200).send([...toDos, newTask])
 })
