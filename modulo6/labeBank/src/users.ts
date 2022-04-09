@@ -3,7 +3,7 @@ export type User = {
     cpf: string,
     birthday: string,
     balance: number
-    bankStatements: BankStatement[]
+    bankStatements?: BankStatement[]
 }
 
 export type BankStatement = {
@@ -14,8 +14,8 @@ export type BankStatement = {
 
 export let users: User[] = [
     {
-        name: "Samwise Gamgee",
-        cpf: "011.121.012-21",
+        name: "Samwise",
+        cpf: "01112101221",
         birthday: "22/09/1980",
         balance: 2500,
         bankStatements: [
@@ -32,8 +32,8 @@ export let users: User[] = [
         ]
     },
     {
-        name: "Peregrin Tuk",
-        cpf: "021.221.022-22",
+        name: "Peregrin",
+        cpf: "02122102222",
         birthday: "12/09/1981",
         balance: 1000,
         bankStatements: [
@@ -50,8 +50,8 @@ export let users: User[] = [
         ]
     },
     {
-        name: "Bilbo Baggins",
-        cpf: "031.321.032-23",
+        name: "Bilbo",
+        cpf: "03132103223",
         birthday: "11/09/1950",
         balance: 20000,
         bankStatements: [

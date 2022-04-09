@@ -1,2 +1,16 @@
 ###
 GET http://localhost:3003/users
+
+###
+POST http://localhost:3003/createUser
+Content-Type: application/json
+
+{
+        "name": "Laura",
+        "cpf": "01412104224",
+        "birthday": "22/09/1990",
+        "balance": 1500
+}
+
+###
+GET http://localhost:3003/balance?name=Peregrin&&cpf=02122102222
