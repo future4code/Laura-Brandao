@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from 'express'
 import cors from 'cors'
 import { AddressInfo } from "net";
 import { users, User, BankStatement } from './users';
-import { age, convertDate } from './functions';
+import { age, convertDate, verifyCpf } from './functions';
 
 
 const app: Express = express();
@@ -25,28 +25,34 @@ app.get("/users", (req: Request, res: Response) => {
 })
 
 // método para criação de novos usuários
-app.post("/createUser", (req: Request, res: Response) => {
+app.post("/create/user", (req: Request, res: Response) => {
    let errorCode = 400
    try {
-      const { name, cpf, birthday, balance, bankStatements }: User = req.body
+      const { name, cpf, birthday }: User = req.body
 
       const majority = age(birthday) >= 18
 
-      if (!name || !cpf || !birthday || !balance) {
+      const cpfIsTheSame = verifyCpf(users, cpf)
+
+      if (!name || !cpf || !birthday) {
          errorCode = 422
-         throw new Error("One or more fields are empty")
+         throw new Error("One or more fields are empty!")
       }
-      if (majority !== true) {
-         throw new Error("User isn't of legal age")
+      if (!majority) {
+         throw new Error("User isn't of legal age!")
+      }
+      if (cpfIsTheSame) {
+         throw new Error("CPF already exists!")
       }
 
       const newUser: User = {
-         name, cpf, birthday, balance, bankStatements
+         name, cpf, birthday, balance: 0, bankStatements: []
       }
 
       users.push(newUser)
+      console.log(newUser)
 
-      res.status(200).send("User was created")
+      res.status(200).send("User was created!")
    } catch (error: any) {
       res.status(errorCode).send(error.message)
    }
@@ -58,9 +64,8 @@ app.get("/balance", (req: Request, res: Response) => {
    try {
       const name: string = req.query.name as string
       const cpf: string = req.query.cpf as string
-      
+
       const user: User | undefined = users.find((item) => item.name.toUpperCase() === name.toUpperCase() && item.cpf === cpf)
-      console.log(user?.balance.toString())
       if (!user) {
          errorCode = 404
          throw new Error("User not found")
@@ -71,6 +76,73 @@ app.get("/balance", (req: Request, res: Response) => {
       res.status(errorCode).send(error.message)
    }
 })
+
+// método para adicionar saldo, passando nome, cpf e o valor
+app.put("/add/balance", (req: Request, res: Response) => {
+   let errorCode = 400
+   try {
+      const { name, cpf, balance, amount, date, description } = req.body
+
+      if (!name || !cpf || !balance) {
+         errorCode = 422
+         throw new Error("One or more fields are empty")
+      }
+
+
+      const totalBalance: User | undefined = users.find((user) => {
+         if (user.name.toUpperCase() === name.toUpperCase() && user.cpf === cpf) {
+            return user.balance += balance
+         }
+         if (amount > user.balance) {
+            throw new Error("You haven't enough balance")
+         }
+      })
+
+
+      if (description !== "Deposit") {
+         errorCode = 422
+         throw new Error("Parameter type is invalid, must be deposit")
+      }
+
+
+      totalBalance?.bankStatements.push({ amount, date, description })
+
+
+      res.status(200).send(totalBalance)
+   } catch (error: any) {
+      res.status(errorCode).send(error.message)
+
+   }
+})
+
+// método para pagar contas
+app.post("/add/payBill", (req: Request, res: Response) => {
+   let errorCode = 400
+   try {
+      const { cpf, amount, date, description } = req.body
+      const user: User | undefined = users.find((user) => user.cpf === cpf)
+
+      if (!amount || !description) {
+         errorCode = 422
+         throw new Error("One or more fields are empty")
+      }
+      if (!user) {
+         errorCode = 404
+         throw new Error("User not found")
+      }
+      if(!date){
+         const newDate = convertDate()
+         user.bankStatements.push({ amount, date: newDate, description })
+      }
+
+      user.bankStatements.push({ amount, date, description })
+      res.status(200).send(user)
+
+   } catch (error: any) {
+      res.status(errorCode).send(error.message)
+   }
+})
+
 
 
 const server = app.listen(process.env.PORT || 3003, () => {

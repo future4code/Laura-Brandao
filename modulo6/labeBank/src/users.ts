@@ -1,16 +1,25 @@
-export type User = {
-    name: string,
-    cpf: string,
-    birthday: string,
-    balance: number
-    bankStatements?: BankStatement[]
+export enum Transaction {
+    DEBIT = "Debit",
+    CREDIT = "Credit",
+    DEPOSIT = "Deposit",
+    PIX = "Pix",
+    TRANSFER = "Transfer"
 }
 
 export type BankStatement = {
     amount: number,
     date: string,
-    description: string
+    description: Transaction
 }
+
+export type User = {
+    name: string,
+    cpf: string,
+    birthday: string,
+    balance: number
+    bankStatements: BankStatement[]
+}
+
 
 export let users: User[] = [
     {
@@ -22,12 +31,12 @@ export let users: User[] = [
             {
                 amount: 10,
                 date: "02/02/2021",
-                description: "second breakfast"
+                description: Transaction.DEBIT
             },
             {
                 amount: 15,
                 date: "03/02/2021",
-                description: "second breakfast"
+                description: Transaction.DEPOSIT
             }
         ]
     },
@@ -40,12 +49,12 @@ export let users: User[] = [
             {
                 amount: 20,
                 date: "02/02/2021",
-                description: "second breakfast"
+                description: Transaction.PIX
             },
             {
                 amount: 25,
                 date: "03/02/2021",
-                description: "second breakfast"
+                description: Transaction.PIX
             }
         ]
     },
@@ -58,12 +67,12 @@ export let users: User[] = [
             {
                 amount: 50,
                 date: "02/02/2021",
-                description: "second breakfast"
+                description: Transaction.DEBIT
             },
             {
                 amount: 60,
                 date: "03/02/2021",
-                description: "second breakfast"
+                description: Transaction.DEBIT
             }
         ]
     }
