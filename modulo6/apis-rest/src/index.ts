@@ -78,7 +78,7 @@ app.post("/createUser", (req: Request, res: Response) => {
     }
 })
 
-// Não houve mudanças mudando para put. Porém, a forma mais correta de se criar outro usuário seria o POST, e edição seria o PUT.
+// Não houve mudanças mudando para put. Porém, a forma mais correta de se criar outro usuário seria o POST, e edição seria o PUT.#
 
 
 

@@ -1,0 +1,38 @@
+###
+GET http://localhost:3003/users
+
+###
+POST http://localhost:3003/create/user
+Content-Type: application/json
+
+{
+        "name": "Laura",
+        "cpf": "01412104224",
+        "birthday": "22/09/1990"
+}
+
+###
+GET http://localhost:3003/balance?name=Peregrin&&cpf=02122102222
+
+###
+PUT http://localhost:3003/add/balance
+Content-Type: application/json
+
+{
+        "name": "Peregrin",
+        "cpf": "02122102222",
+        "balance": 5000,
+        "amount": 900,
+        "date": "12/04/2022",
+        "description": "Deposit"
+}
+
+###
+POST http://localhost:3003/add/payBill
+Content-Type: application/json
+
+{
+        "cpf": "02122102222",
+        "amount": 150,
+        "description": "Deposit"
+}
