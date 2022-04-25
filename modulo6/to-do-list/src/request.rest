@@ -1,0 +1,35 @@
+###
+POST http://localhost:3003/user
+Content-Type: application/json 
+
+{
+    "name": "teste",
+    "nickname": "teste",
+    "email": "teste@teste.com"
+}
+
+###
+GET http://localhost:3003/user/03012400-19c5-41fc-a202-c1bc55354301
+
+###
+PUT http://localhost:3003/user/edit/03012400-19c5-41fc-a202-c1bc55354301
+Content-Type: application/json 
+
+{
+    "name": "Thorin",
+    "nickname": "Totoyo"
+}
+
+###
+POST http://localhost:3003/task
+Content-Type: application/json 
+
+{
+	"title": "Pedir comida pros humanos",
+	"description": "Devo pedir comida pros humanos, e tentar enganá-los pra ganhar duas vezes.",
+	"limitDate": "04/05/2020",
+	"creatorUserId": "03012400-19c5-41fc-a202-c1bc55354301"
+}
+
+###
+GET http://localhost:3003/task/5eefc425-68e9-4e87-9484-03e76597fae0
