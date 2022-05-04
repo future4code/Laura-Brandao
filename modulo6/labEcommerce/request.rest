@@ -1,2 +1,25 @@
 ###
-GET http:///localhost:3003/users
+GET http://localhost:3003/users
+
+###
+GET http://localhost:3003/products?name=sa&order=DESC
+
+###
+POST http://localhost:3003/users
+Content-Type: application/json 
+
+{
+    "name": "Teste2",
+    "email": "teste2@teste.com",
+    "password": "@Ekb#34sdrgA"
+}
+
+###
+POST http://localhost:3003/products
+Content-Type: application/json 
+
+{
+    "name": "Velotrol",
+    "price": 200,
+    "imageUrl": "https://i.picsum.photos/id/146/5184/3456.jpg?hmac=G_lxX9tIxlu06vWGZhaLVSwVD0Id60UslhgveMXNEpo"
+}

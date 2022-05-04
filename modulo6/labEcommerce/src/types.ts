@@ -1,15 +1,21 @@
-export type recipe = {
-   id: string
-   title: string
-   description: string
-   userId: string
-   createdAt: number
+export type User = {
+    id: string,
+    name: string,
+    email: string,
+    password: string
 }
 
-export type user = {
-   id: string
-   name: string
-   email: string
-   password: string
-   recipes?: recipe[]
+export type Product = {
+    id: string,
+    name: string,
+    price: number,
+    imageUrl: string
+}
+
+export type Purchase = {
+    id: string,
+    userId: string,
+    productId: string,
+    quantity: number,
+    totalPrice: number
 }
