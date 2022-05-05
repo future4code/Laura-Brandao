@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import selectAllProducts from "../services/selectAllProducts";
 import { Product } from "../types";
 
-export async function getAllProducts(req: Request, res: Response): Promise<void> {
+export async function getProducts(req: Request, res: Response): Promise<void> {
     try {
         let name = req.query.name as string;
         let order = req.query.order as string

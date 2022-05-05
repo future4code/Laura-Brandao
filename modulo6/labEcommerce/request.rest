@@ -2,7 +2,7 @@
 GET http://localhost:3003/users
 
 ###
-GET http://localhost:3003/products?name=sa&order=DESC
+GET http://localhost:3003/products
 
 ###
 POST http://localhost:3003/users
@@ -23,3 +23,16 @@ Content-Type: application/json
     "price": 200,
     "imageUrl": "https://i.picsum.photos/id/146/5184/3456.jpg?hmac=G_lxX9tIxlu06vWGZhaLVSwVD0Id60UslhgveMXNEpo"
 }
+
+###
+POST http://localhost:3003/purchases
+Content-Type: application/json 
+
+{
+    "userId": "01",
+    "productId": "c423fca3-df98-448f-a801-a1cf3619b94d",
+    "quantity": 1
+}
+
+###
+GET http://localhost:3003/users/01/purchases

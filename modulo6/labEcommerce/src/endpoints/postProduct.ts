@@ -8,10 +8,6 @@ export const postProduct = async (req: Request, res: Response): Promise<void> =>
 
         const { name, price, imageUrl } = req.body
 
-        console.log(name)
-        console.log(price)
-        console.log(imageUrl)
-
         if (!name || !price || !imageUrl) {
             errorCode = 422
             throw new Error("One or more fields are empty")
