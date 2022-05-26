@@ -1,0 +1,14 @@
+POST http://localhost:3003/user 
+Content-Type: application/json 
+
+{
+	"name": "Thorin",
+	"email": "thorin@email.com",
+	"password": "!#$234dsf"	
+}
+
+###
+GET http://localhost:3003/all
+
+###
+DELETE http://localhost:3003/8adad83d-3601-4781-b50d-4788791eed88
