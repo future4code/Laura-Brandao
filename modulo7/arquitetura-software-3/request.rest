@@ -1,0 +1,20 @@
+POST http://localhost:3003/user/create 
+Content-Type: application/json 
+
+{
+    "name": "Rodrigo5",
+    "nickname": "Rodrigo5",
+    "email": "rodrigo5@email.com",
+    "password": "1223145153"
+}
+
+###
+POST http://localhost:3003/task/create 
+Content-Type: application/json 
+
+{
+    "title": "aula arquitetura II",
+    "description": "como usar o express.router()",
+    "deadline": "26/05/2022",
+    "authorId": "1b146f8d-7709-4a84-8c3c-7f980e8d4da3" 
+}
