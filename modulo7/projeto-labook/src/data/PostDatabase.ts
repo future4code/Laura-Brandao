@@ -1,7 +1,9 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { post } from "../model/post";
+import { authenticationData } from "../model/authenticationData";
 
 export class PostDatabase extends BaseDatabase {
+    private static TABLE_NAME = "labook_posts";
 
     public insertPost = async (
         post: post
@@ -12,8 +14,9 @@ export class PostDatabase extends BaseDatabase {
                 photo: post.photo,
                 description: post.description,
                 type: post.type,
+                createdAt: post.createdAt,
                 authorId: post.authorId
-            }).into('labook_posts')
+            }).into(PostDatabase.TABLE_NAME)
 
         } catch (error: any) {
             throw new Error(error.sqlMessage || error.message)
@@ -21,14 +24,14 @@ export class PostDatabase extends BaseDatabase {
     }
 
 
-    public async get(): Promise<post[]> {
+    public async getPostsById(id: authenticationData): Promise<post[]> {
 
         try {
             const posts: post[] = [];
 
             const result = await PostDatabase.connection()
                 .select("*")
-                .from('labook_posts');
+                .from(PostDatabase.TABLE_NAME);
 
             for (let post of result) {
                 posts.push(post);

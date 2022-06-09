@@ -12,7 +12,7 @@ export type post = {
     authorId: string
 }
 
-export interface UserInputDTO {
+export interface PostInputDTO {
     photo: string,
     description: string,
     type: POST_TYPES,
@@ -20,7 +20,7 @@ export interface UserInputDTO {
     authorId: string
 }
 
-export interface UserOutputDTO {
+export interface PostOutputDTO {
     photo: string,
     description: string,
     type: POST_TYPES,
