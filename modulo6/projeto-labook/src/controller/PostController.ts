@@ -6,20 +6,20 @@ import { PostInputDTO } from "../model/post";
 export class PostController {
   public createPost = async (req: Request, res: Response) => {
     try {
-      const { photo, description, type, createdAt, authorId } = req.body;
+      const { photo, description, type, created_at, author_id } = req.body;
 
       const input: PostInputDTO = {
         photo,
         description,
         type,
-        createdAt,
-        authorId,
+        created_at,
+        author_id
       };
 
       const postBusiness = new PostBusiness();
       await postBusiness.createPost(input);
 
-      res.status(201).send({ message: "Product created!" });
+      res.status(201).send({ message: "Post created!" });
     } catch (error: any) {
       let message = error.sqlMessage || error.message
       res.statusCode = 400
@@ -29,17 +29,11 @@ export class PostController {
 
   public getPostsById = async (req: Request, res: Response) => {
     try {
-      let message = "Success!"
-
       const { id } = req.params
 
-      const input: authenticationData = {
-        id
-      }
-
       const postBusiness = new PostBusiness();
-      await postBusiness.getPostsById(input);
-      res.status(200).send(message)
+      const result = await postBusiness.getPostsById(id);
+      res.status(200).send(result)
 
     } catch (error: any) {
       let message = error.sqlMessage || error.message

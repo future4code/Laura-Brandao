@@ -14,8 +14,8 @@ export class PostDatabase extends BaseDatabase {
                 photo: post.photo,
                 description: post.description,
                 type: post.type,
-                createdAt: post.createdAt,
-                authorId: post.authorId
+                created_at: post.created_at,
+                author_id: post.author_id
             }).into(PostDatabase.TABLE_NAME)
 
         } catch (error: any) {
@@ -24,20 +24,11 @@ export class PostDatabase extends BaseDatabase {
     }
 
 
-    public async getPostsById(id: authenticationData): Promise<post[]> {
+    public getPostsById = async(id: string) => {
 
         try {
-            const posts: post[] = [];
-
-            const result = await PostDatabase.connection()
-                .select("*")
-                .from(PostDatabase.TABLE_NAME);
-
-            for (let post of result) {
-                posts.push(post);
-            }
-
-            return posts;
+            return await PostDatabase.connection(PostDatabase.TABLE_NAME)
+                .where("id","LIKE", id)
 
         } catch (error: any) {
             throw new Error(error.sqlMessage || error.message);

@@ -1,0 +1,39 @@
+###
+POST http://localhost:3003/user/create 
+Content-Type: application/json
+
+{
+    "name": "Thorin", 
+    "email": "thorin@email.com", 
+    "password": "83228374a#"
+}
+
+###
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+	"photo":"https://i.picsum.photos/id/1006/3000/2000.jpg?hmac=x83pQQ7LW1UTo8HxBcIWuRIVeN_uCg0cG6keXvNvM8g",
+	"description":"Me and my best friend Thorin!",
+	"type":"normal",
+	"created_at":"2022-06-11",
+	"author_id":"b09cb5a6-87e3-4679-8f81-5dc64cb7d100"
+}
+
+###
+GET http://localhost:3003/post/posts/d357cfac-4c71-4023-807e-85807c3fafae
+
+###
+POST http://localhost:3003/user/create/friend
+Content-Type: application/json
+
+{
+    "user_id": "a64cd19d-e0b9-454d-9c67-befbee9e419d", 
+    "friend_id": "b09cb5a6-87e3-4679-8f81-5dc64cb7d100"
+}
+
+###
+DELETE http://localhost:3003/user/friend/delete/a64cd19d-e0b9-454d-9c67-befbee9e419d
+
+###
+GET http://localhost:3003/user/friends/posts/a64cd19d-e0b9-454d-9c67-befbee9e419d
