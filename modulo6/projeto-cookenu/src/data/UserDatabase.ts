@@ -1,10 +1,12 @@
 import { CustomError } from "../error/customError";
 import { EditUserInput, user } from "../model/user";
+import { AuthenticationData } from "../model/types";
 import { BaseDatabase } from "./BaseDatabase";
+
 
 export class UserDatabase extends BaseDatabase {
 
-  private TABLE_NAME = "Auth_users"
+  private TABLE_NAME = "users_cookenu"
 
   public insertUser = async (user: user) => {
     try {
@@ -23,6 +25,8 @@ export class UserDatabase extends BaseDatabase {
     }
   };
 
+  ////////* */////////
+  
   public editUser = async (user: EditUserInput) => {
     try {
       await UserDatabase.connection
