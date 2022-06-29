@@ -19,9 +19,9 @@ const hashManager = new HashManager();
 export class UserBusiness {
   public createUser = async (input: UserInputDTO): Promise<string> => {
     try {
-      const { name, nickname, email, password } = input;
+      const { name, nickname, email, password, role } = input;
 
-      if (!name || !nickname || !email || !password) {
+      if (!name || !nickname || !email || !password || !role) {
         throw new CustomError(
           400,
           'Preencha os campos "name","nickname", "email" e "password"'
@@ -46,10 +46,11 @@ export class UserBusiness {
         nickname,
         email,
         password: hashPassword,
+        role
       };
 
       await userDatabase.insertUser(user);
-      const token = tokenGenerator.generateToken(id)
+      const token = tokenGenerator.generateToken(id, role)
 
       return token
     } catch (error: any) {
