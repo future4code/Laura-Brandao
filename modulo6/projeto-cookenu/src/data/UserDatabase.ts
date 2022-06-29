@@ -1,21 +1,12 @@
 import { CustomError } from "../error/customError";
 import { EditUserInput, user } from "../model/user";
+import { AuthenticationData } from "../model/types";
 import { BaseDatabase } from "./BaseDatabase";
 
-export class UserDatabase extends BaseDatabase {
-  public findUser = async (email: string) => {
-    try {
-  
-      const result = await UserDatabase.connection("Auth_users")
-        .select()
-        .where({email});
 
-      
-      return result[0];
-    } catch (error: any) {
-      throw new CustomError(400, error.message);
-    }
-  };
+export class UserDatabase extends BaseDatabase {
+
+  private TABLE_NAME = "users_cookenu"
 
   public insertUser = async (user: user) => {
     try {
@@ -28,22 +19,34 @@ export class UserDatabase extends BaseDatabase {
           password: user.password,
           role: user.role
         })
-        .into("Auth_users");
+        .into(this.TABLE_NAME);
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }
   };
 
+  ////////* */////////
+  
   public editUser = async (user: EditUserInput) => {
     try {
       await UserDatabase.connection
         .update({ name: user.name, nickname: user.nickname })
         .where({ id: user.id })
-        .into("Auth_users");
+        .into(this.TABLE_NAME);
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }
   };
 
- 
+  public findUserByEmail = async (email: string) => {
+    try {
+  
+      const result = await UserDatabase.connection(this.TABLE_NAME)
+        .select()
+        .where({email});
+      return result[0];
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
+  };
 }
