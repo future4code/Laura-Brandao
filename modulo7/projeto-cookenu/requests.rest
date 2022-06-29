@@ -1,0 +1,28 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "name": "rodrigo", 
+   "nickname": "roh", 
+   "email": "rodrigo@oscorp.com" ,
+   "password": "123",
+   "role": "ADMIN"
+}
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "osbourne@oscorp.com" ,
+   "password": "ihatepeter"
+}
+
+###
+PUT http://localhost:3003/user/a46481f5-31ba-489e-9557-64c3e421be3d
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjBlMjJjMmM4LTZlNGEtNDIyOS05MTJlLTk0OWU5M2Y5MWI3NiIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY1NTc2ODI0MSwiZXhwIjoxNjU1NzcwMDQxfQ.yv_arNUzoeY_8GRfLYxbzAXy3RG2heckb8DmJClvQZ0
+
+{
+   "name": "Harry Osbourne",
+   "nickname": "Green Goblin"  
+}
