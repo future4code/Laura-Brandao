@@ -1,46 +1,49 @@
-import { VStack, Box, Image, Container } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import * as React from "react";
 
 export default function Cards(property) {
   return (
-    <VStack
-      spacing={1}
+    <Box
+      maxW="200px"
+      maxH="300px"
       borderWidth="1px"
-      borderColor="black"
       borderRadius="lg"
+      overflow="hidden"
+      borderColor="black"
+      boxShadow="dark-lg"
+      bg="white"
       _hover={{ bg: "#FEEBC8" }}
-      transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
       _active={{
         bg: "#dddfe2",
         transform: "scale(0.98)",
         borderColor: "#bec3c9",
       }}
-      _focus={{
-        boxShadow:
-          "0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15)",
-      }}
+      transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
     >
       <Image
-        borderTopRadius="lg"
-        w="100%"
-        h="40vh"
         src={property.imageUrl}
         alt={property.title}
+        onClick={property.onClick}
+        maxW={"100%"}
+        maxH={"100%"}
+        pt={"4px"}
+        pb={"4px"}
       />
-
-      <Box p="2">
-        <Box fontWeight="semibold" as="h4" lineHeight="tight" noOfLines={1}>
+      {/* <Box p="1" maxW={"100%"} maxH={"20%"}>
+        <Box
+          fontWeight="bold"
+          fontSize={"xs"}
+          lineHeight="tight"
+          marginBottom={"2px"}
+          noOfLines={[1, 2, 3]}
+          isTruncated
+        >
           {property.title}
         </Box>
-
-        <Box>
-          <Container centerContent>
-            <Box padding="1" color="black">
-            {property.content}
-            </Box>
-          </Container>
+        <Box display="flex" justifyContent={"center"} fontSize={"xs"} noOfLines={[1, 2, 3]}>
+          {property.content}
         </Box>
-      </Box>
-    </VStack>
+      </Box> */}
+    </Box>
   );
 }

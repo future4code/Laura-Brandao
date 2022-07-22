@@ -1,54 +1,131 @@
-import React from "react";
-import { Center, Grid, GridItem, Button } from "@chakra-ui/react";
-import { Heading } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Grid, Flex, Button } from "@chakra-ui/react";
 import Cards from "../Components/Cards";
 import tarotJson from "../Assets/tarot.json";
+import Header from "../Components/Header";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  isOpen,
+  onOpen,
+  onClose,
+  useDisclosure,
+} from "@chakra-ui/react";
 
 export default function HomePage() {
-  
-  const renderedCards = tarotJson.cards.map((card) => {
+  const [deck, setDeck] = useState(newDeck);
+  const [deck1, setDeck1] = useState(tarotJson);
+
+  function newDeck() {
+    const array = [];
+    tarotJson.cards.forEach((card) => {
+      array.push({
+        name: card.name,
+        frontCard: tarotJson.imagesUrl + card.image,
+        backCard: tarotJson.imageBackCard,
+        isShowing: true,
+      });
+    });
+    return array;
+  }
+
+  function hideCards() {
+    let array = [...deck];
+    array.forEach((card) => {
+      card.isShowing = false;
+    });
+    return array;
+  }
+
+  function showCards() {
+    let array = [...deck];
+    array.forEach((card) => {
+      card.isShowing = true;
+    });
+    return array;
+  }
+
+  function flipCard(name) {
+    let array = [...deck];
+    const index = array.findIndex((card) => {
+      return card.name === name;
+    });
+    array[index].isShowing = !array[index].isShowing;
+
+    return array;
+  }
+
+  function shuffleCards() {
+    let array = hideCards();
+    let j = 0;
+    let temporary;
+    for (let i = 0; i < array.length; i++) {
+      j = Math.floor(Math.random() * (i + 1));
+      temporary = array[i];
+      array[i] = array[j];
+      array[j] = temporary;
+    }
+    return array;
+  }
+
+  const renderedCards = deck.map((card) => {
     return (
       <Cards
-        imageUrl={
-          "https://dkw5ssdvaqf8l.cloudfront.net/static/psr/br/framework/yii/images/content/pt-br/product/tarot/marselha/162x341/" +
-          card.image
-        }
+        imageUrl={card.isShowing ? card.frontCard : card.backCard}
         title={card.name}
-        content={"Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+        onClick={() => setDeck(flipCard(card.name))}
       ></Cards>
     );
   });
 
+  // abrir popup chakra
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Grid
-      templateAreas={`"header header"
-                  "main main"
-                  "footer footer"`}
-      gridTemplateRows={"50px 1fr 30px"}
-      gridTemplateColumns={"150px 1fr"}
-      h="100%"
-      gap="1"
-      color="blackAlpha.700"
-      fontWeight="bold"
-    >
-      <GridItem pl="2" bg="orange.300" area={"header"}>
-        <Center>
-          <Heading>Tarot do dia</Heading>
-        </Center>
-      </GridItem>
-      <GridItem pl="2" pr="2" bg="green.300" area={"main"}>
-        <Center p="2">
-          <Button colorScheme="teal" variant="outline">
-            Shuffle
-          </Button>
-        </Center>
-        <Grid templateColumns="repeat(6, 1fr)" gap={1}>
+    <div>
+      <Header />
+      <Button onClick={onOpen}>Open Modal</Button>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>O deck foi embaralhado! Clique em uma carta.</ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <Button
+        size="lg"
+        colorScheme="blue"
+        fontSize="13px"
+        onClick={() => onOpen(setDeck(shuffleCards()))}
+        
+      >
+        Iniciar jogo
+      </Button>
+      <Flex align={"center"} justify={"center"} bg={"rgba(0, 0, 0, 0.16)"}>
+        <Grid
+          templateColumns={["repeat(4, 1fr)"]}
+          gap={2}
+          align={"center"}
+          m={["13px"]}
+        >
           {renderedCards}
         </Grid>
-      </GridItem>
-      <GridItem pl="2" bg="blue.300" area={"footer"}>
-        Home Footer
-      </GridItem>
-    </Grid>
+      </Flex>
+    </div>
   );
 }
