@@ -12,7 +12,7 @@ export default function Cards(property) {
       borderColor="black"
       boxShadow="dark-lg"
       bg="white"
-      _hover={{ bg: "#FEEBC8" }}
+      _hover={{ bg: "#E2E8F0" }}
       _active={{
         bg: "#dddfe2",
         transform: "scale(0.98)",
@@ -21,6 +21,7 @@ export default function Cards(property) {
       transition="all 0.2s cubic-bezier(.08,.52,.52,1)"
     >
       <Image
+        key={property.title}
         src={property.imageUrl}
         alt={property.title}
         onClick={property.onClick}
@@ -29,21 +30,6 @@ export default function Cards(property) {
         pt={"4px"}
         pb={"4px"}
       />
-      {/* <Box p="1" maxW={"100%"} maxH={"20%"}>
-        <Box
-          fontWeight="bold"
-          fontSize={"xs"}
-          lineHeight="tight"
-          marginBottom={"2px"}
-          noOfLines={[1, 2, 3]}
-          isTruncated
-        >
-          {property.title}
-        </Box>
-        <Box display="flex" justifyContent={"center"} fontSize={"xs"} noOfLines={[1, 2, 3]}>
-          {property.content}
-        </Box>
-      </Box> */}
     </Box>
   );
 }

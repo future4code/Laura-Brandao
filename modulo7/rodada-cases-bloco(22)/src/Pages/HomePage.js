@@ -1,25 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { goToCardPage } from "../Routes/Coordinator";
 import { Grid, Flex, Button } from "@chakra-ui/react";
 import Cards from "../Components/Cards";
 import tarotJson from "../Assets/tarot.json";
-import Header from "../Components/Header";
 import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  isOpen,
-  onOpen,
-  onClose,
   useDisclosure,
 } from "@chakra-ui/react";
 
 export default function HomePage() {
+  const navigate = useNavigate();
   const [deck, setDeck] = useState(newDeck);
-  const [deck1, setDeck1] = useState(tarotJson);
+  const [gameStarted, setGameStarted] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   function newDeck() {
     const array = [];
@@ -73,50 +72,71 @@ export default function HomePage() {
     return array;
   }
 
+  function startGame() {
+    setDeck(shuffleCards());
+    setGameStarted(true);
+  }
+
+  function showCardInfo(name) {
+    if (gameStarted === true) {
+      setDeck(flipCard(name));
+      setTimeout(() => {
+        goToCardPage(navigate, name);
+      }, 1000);
+      setGameStarted(false);
+    }
+  }
+
   const renderedCards = deck.map((card) => {
     return (
       <Cards
+        key={card.name}
         imageUrl={card.isShowing ? card.frontCard : card.backCard}
         title={card.name}
-        onClick={() => setDeck(flipCard(card.name))}
+        onClick={() => showCardInfo(card.name)}
       ></Cards>
     );
   });
 
-  // abrir popup chakra
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <div>
-      <Header />
-      <Button onClick={onOpen}>Open Modal</Button>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>O deck foi embaralhado! Clique em uma carta.</ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
-      <Button
-        size="lg"
-        colorScheme="blue"
-        fontSize="13px"
-        onClick={() => onOpen(setDeck(shuffleCards()))}
-        
+      <Flex
+        w="100%"
+        align={"center"}
+        justify={"center"}
+        bg={"rgba(0, 0, 0, 0.24)"}
+        p={"10px"}
+        pos="fixed"
+        zIndex={2}
+        boxShadow={"dark-lg"}
       >
-        Iniciar jogo
-      </Button>
-      <Flex align={"center"} justify={"center"} bg={"rgba(0, 0, 0, 0.16)"}>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalCloseButton />
+            <ModalBody fontSize="17px">
+              O baralho foi embaralhado! Clique em uma carta para ler a
+              interpretação.
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+        <Button
+          size="lg"
+          colorScheme="blue"
+          fontSize="30px"
+          onClick={() => onOpen(startGame())}
+        >
+          Iniciar jogo
+        </Button>
+      </Flex>
+
+      <Flex pt="100px" align={"center"} justify={"center"}>
         <Grid
           templateColumns={["repeat(4, 1fr)"]}
           gap={2}
