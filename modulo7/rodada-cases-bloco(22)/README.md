@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+## Case 01 Bloco 22- Frontend - Personare
+#### Link surge: stereotyped-porter.surge.sh
+## Introdução
+Criar um jogo de Tarot, permitindo o sorteio de uma carta.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+E as especificações são:
 
-## Available Scripts
+- Tela de apresentação exibindo todas as cartas com seu conteúdo visível, e com um botão para iniciar o jogo.
+- Ao clicar no botão, as cartas deverão ser viradas - escondendo o conteúdo - e embaralhadas.
+- Permitir que o usuário selecione apenas uma carta, clicando na mesma.
+- Apresentar a carta selecionada, o nome da carta e uma descrição. (a descrição pode ser um lorem ipsum)
 
-In the project directory, you can run:
+## Pré-requisitos
 
-### `npm start`
+- Aplicação feita em React
+- Possuir testes
+- Gerar versão de produção
+- Criar micro commits ou commits por features
+- Detalhar nos comentários dos commits as decisões tomadas.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Diferenciais
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Boa documentação
+- Testes de componentes isolados
 
-### `npm test`
+##
+##
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Tela inicial (antes de iniciar jogo)
+![image](https://user-images.githubusercontent.com/89229968/180673145-de2c1120-880d-499c-b9ca-122031893e39.png)
+### Tela inicial (ao clicar em iniciar jogo)
+![image](https://user-images.githubusercontent.com/89229968/180673592-3c26efa7-f050-452d-a21c-f63b781c9962.png)
+### Tela inicial (ao clicar na carta)
+![image](https://user-images.githubusercontent.com/89229968/180673634-ae1b46c6-1a82-43e2-8eaa-accc17e21449.png)
+### Tela de detalhes das cartas
+![image](https://user-images.githubusercontent.com/89229968/180673181-54798c9c-a44f-4b8f-9886-8af0b87a3a3c.png)
 
-### `npm run build`
+### O que funciona
+[x] Tela de apresentação exibindo todas as cartas com seu conteúdo visível, e com um botão para iniciar o jogo.
+[x] Ao clicar no botão, as cartas deverão ser viradas - escondendo o conteúdo - e embaralhadas.
+[x] Permitir que o usuário selecione apenas uma carta, clicando na mesma.
+[x] Apresentar a carta selecionada, o nome da carta e uma descrição.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### O que não funciona
+[ ] Não consegui criar os testes a tempo da entrega
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 🛠 Tecnologias
+As seguintes ferramentas foram usadas na construção do projeto:
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [React Router Dom](https://v5.reactrouter.com/)
+- [ChakraUI](https://chakra-ui.com/docs/layout/center)
